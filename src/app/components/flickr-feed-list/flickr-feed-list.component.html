@@ -1,4 +1,18 @@
-<p>
-  flickr-feed-list works!
-</p>
-{{ flickrFeedData | json }}
+
+<div class="app-container">  
+  <h1>Flickr Public Feed</h1>
+  <div class="feed-container">
+    <div class="flickr-item" *ngFor="let item of flickrFeedItems">
+      <div class="flickr-item-img">
+        <img [src]="item.media['m']" [alt]="item.title">
+      </div>
+      <div class="flickr-item-info">
+        <h2>{{ item.title }}</h2>
+        <p>Published {{ item.published | date : 'medium' }}</p>
+        <a href="{{ 'https://www.flickr.com/photos/' + item.author_id }}">Photo author</a>
+        <a [href]="item.link">View on Flickr</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- {{ flickrFeedData | json }} -->
