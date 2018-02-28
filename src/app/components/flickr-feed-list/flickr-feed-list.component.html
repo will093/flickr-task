@@ -1,18 +1,15 @@
-
-<div class="app-container">  
-  <h1>Flickr Public Feed</h1>
-  <div class="feed-container">
-    <div class="flickr-item" *ngFor="let item of flickrFeedItems">
-      <div class="flickr-item-img">
-        <img [src]="item.media['m']" [alt]="item.title">
-      </div>
-      <div class="flickr-item-info">
-        <h2>{{ item.title }}</h2>
-        <p>Published {{ item.published | date : 'medium' }}</p>
-        <a href="{{ 'https://www.flickr.com/photos/' + item.author_id }}">Photo author</a>
-        <a [href]="item.link">View on Flickr</a>
-      </div>
-    </div>
+<article class="well row" *ngFor="let item of flickrFeedItems, index as i">
+  <div class="col-sm-3">
+      <a [routerLink]="['/detail', i]">
+        <img class="thumbnail img-responsive" [src]="item.media['m']" [alt]="item.title">
+      </a>
   </div>
-</div>
-<!-- {{ flickrFeedData | json }} -->
+  <div class="col-sm-9 item-info">
+    <h2>
+      <a [routerLink]="['/detail', i]">{{ item.title }}</a>
+    </h2>
+    <p>Published {{ item.published | date : 'medium' }}</p>
+    <a class="underline" href="{{ 'https://www.flickr.com/photos/' + item.author_id }}">Photo author</a>
+    <a class="underline" [href]="item.link">View on Flickr</a>
+  </div>
+</article>

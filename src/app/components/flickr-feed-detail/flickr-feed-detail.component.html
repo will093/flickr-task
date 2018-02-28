@@ -1,3 +1,22 @@
-<p>
-  flickr-feed-detail works!
-</p>
+<div class="well">
+  <h2>
+    <a [href]="item.link">{{item.title}}</a>
+  </h2>
+  <a [routerLink]="['/list']" class="btn btn-primary pull-right back-button">
+    <span class="glyphicon glyphicon-menu-left"></span> Back
+  </a>
+  <p>
+    <a class="underline">Photo Author</a> | Published {{ item.published | date : 'medium' }}
+  </p>
+  <div class="row">
+    <div class="col-md-3">
+      <img class="img-responsive thumbnail" [src]="item.media['m']">
+    </div>
+    <div class="col-md-9" [innerHtml]="description">
+    </div>
+  </div>
+  <p>
+    Tags:
+    <a class="tag" *ngFor="let tag of tags" href="{{ 'https://www.flickr.com/photos/tags/' + tag }}">{{ tag }} </a>
+  </p>
+</div>

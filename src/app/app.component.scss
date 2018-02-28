@@ -1,0 +1,30 @@
+
+@import "../variables";
+
+$header-height: 102px;
+$content-padding: 1em;
+
+header {
+    padding: 2em;
+    background-color: $brand-primary;
+    position: fixed;
+    width: 100%;
+
+    h1 {
+        margin: 0;
+        color: $brand-success;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+main {
+    height: 100vh;
+    padding-top: calc(#{$header-height} + #{$content-padding});
+}
+
+main .container {
+    overflow-y: auto;
+    max-height: calc(100vh - #{$header-height} - 2 * #{$content-padding});
+}

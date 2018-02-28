@@ -1,3 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'variables';
-@import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
+
+@import './variables';
+
+@import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import "../node_modules/bootswatch/flatly/bootswatch";
+
+.underline {
+    text-decoration: underline;
+}

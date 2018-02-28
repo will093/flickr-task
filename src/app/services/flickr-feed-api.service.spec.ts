@@ -1,8 +1,8 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
+import { inject, TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs/Observable';
 
 import { FlickrFeedApiService } from './flickr-feed-api.service';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 
 describe('FlickrFeedApiService', () => {
 
@@ -21,7 +21,7 @@ describe('FlickrFeedApiService', () => {
   });
 
   describe('getSingle', () => {
-    
+
     it('should call jsonp with a url containing the correct tags, format and jsoncallback query string parameters.', inject([FlickrFeedApiService], (service: FlickrFeedApiService) => {
       const testTags = 'testTags1 testTag2';
       service.getFeed(testTags);
@@ -47,7 +47,7 @@ describe('FlickrFeedApiService', () => {
       service.getFeed(testId).subscribe(feedData => {
         result = feedData;
       });
-      
+
       expect(result).toEqual(testResponse);
     }));
   });

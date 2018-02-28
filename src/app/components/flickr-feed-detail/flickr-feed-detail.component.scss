@@ -1,0 +1,23 @@
+h2 {
+    margin-top: 0;
+    display: inline-block;
+}
+
+.tag {
+    margin: 0 0.5em;
+    text-decoration: underline;
+}
+
+img {
+    margin: auto;
+}
+
+.back-button {
+    display: none;
+}
+
+@media (min-width: 800px){
+    .back-button {
+        display: inline-block;
+    }
+}

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { FlickrFeedData } from '../../models/flickr-feed-data';
-import { FlickrFeedApiService } from '../../services/flickr-feed-api.service';
 import { FlickrFeedItemData } from '../../models/flickr-feed-item-data';
 
 @Component({
@@ -11,18 +10,11 @@ import { FlickrFeedItemData } from '../../models/flickr-feed-item-data';
 })
 export class FlickrFeedListComponent implements OnInit {
 
-  flickrFeedData: FlickrFeedData;
   flickrFeedItems: FlickrFeedItemData[];
 
-  constructor(private flickrFeedApiService: FlickrFeedApiService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.flickrFeedItems = [];
-    
-    this.flickrFeedApiService.getFeed('potato').subscribe(data => {
-      this.flickrFeedData = data;
-      this.flickrFeedItems = data.items;
-    })
+    this.flickrFeedItems = this.route.snapshot.data.potatoFlickrFeed.items;
   }
-
 }

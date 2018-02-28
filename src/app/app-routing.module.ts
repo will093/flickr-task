@@ -1,17 +1,35 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { FlickrFeedListComponent } from './components/flickr-feed-list/flickr-feed-list.component';
+import { RouterModule, Routes } from '@angular/router';
+
 import { FlickrFeedDetailComponent } from './components/flickr-feed-detail/flickr-feed-detail.component';
+import { FlickrFeedListComponent } from './components/flickr-feed-list/flickr-feed-list.component';
+import { FlickrFeedResolver } from './resolvers/flickr-feed.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: FlickrFeedListComponent
+    resolve: {
+      potatoFlickrFeed: FlickrFeedResolver,
+    },
+    data: {
+      flickrTags: 'potato'
+    },
+    children: [
+      {
+        path: '',
+        redirectTo: '/list',
+        pathMatch: 'full'
+      },
+      {
+        path: 'list',
+        component: FlickrFeedListComponent,
+      },
+      {
+        path: 'detail/:itemIndex',
+        component: FlickrFeedDetailComponent
+      }
+    ]
   },
-  {
-    path: 'detail',
-    component: FlickrFeedDetailComponent
-  }
 ];
 
 @NgModule({
